@@ -23,4 +23,11 @@ public class chatController {
         var respose = chatClient.prompt(q).call().content();
         return ResponseEntity.ok(respose);
     }
+
+    @GetMapping("/chatWithLocalAI")
+    public ResponseEntity<String> chatWithLocalAI(@RequestParam(value = "q",required = true) String q){
+
+        var respose = chatClient.prompt(q).call().content();
+        return ResponseEntity.ok(respose);
+    }
 }
