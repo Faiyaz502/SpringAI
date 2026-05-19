@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping
 public class chatController {
 
-    private ChatClient chatClient;
+    private final ChatClient chatClient;
 
     public chatController(ChatClient.Builder builder){
         this.chatClient = builder.build();
