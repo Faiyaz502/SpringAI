@@ -27,7 +27,10 @@ public class chatController {
     @GetMapping("/chatWithLocalAI")
     public ResponseEntity<String> chatWithLocalAI(@RequestParam(value = "q",required = true) String q){
 
-        var respose = chatClient.prompt(q).call().content();
+        var respose = chatClient
+                .prompt(q)
+                .call()
+                .content();
         return ResponseEntity.ok(respose);
     }
 }
