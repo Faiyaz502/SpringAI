@@ -20,7 +20,10 @@ public class chatController {
     @GetMapping("/chat")
     public ResponseEntity<String> chat(@RequestParam(value = "q",required = true) String q){
 
-        var respose = chatClient.prompt(q).call().content();
+        var respose = chatClient.
+                prompt(q).
+                call().
+                content();
         return ResponseEntity.ok(respose);
     }
 
