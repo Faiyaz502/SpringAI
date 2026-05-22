@@ -1,39 +1,61 @@
 package com.example.SpringAI.controller;
 
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping
 public class chatController {
 
-    private final ChatClient chatClient;
+    private final ChatClient geminiClient;
+    private final ChatClient groqClient;
+    private final ChatClient ollamaClient;
 
-    public chatController(ChatClient.Builder builder){
-        this.chatClient = builder.build();
+    public chatController(
+            @Qualifier("geminiClient") ChatClient geminiClient,
+            @Qualifier("groqClient") ChatClient groqClient,
+            @Qualifier("ollamaClient") ChatClient ollamaClient
+    ) {
+        this.geminiClient = geminiClient;
+        this.groqClient = groqClient;
+        this.ollamaClient = ollamaClient;
     }
 
-    @GetMapping("/chat")
-    public ResponseEntity<String> chat(@RequestParam(value = "q",required = true) String q){
 
-        var respose = chatClient.
-                prompt(q).
-                call().
-                content();
-        return ResponseEntity.ok(respose);
-    }
+    @GetMapping("/chat/gemini")
+    public ResponseEntity<String> chat(@RequestParam String q) {
 
-    @GetMapping("/chatWithLocalAI")
-    public ResponseEntity<String> chatWithLocalAI(@RequestParam(value = "q",required = true) String q){
-
-        var respose = chatClient
+        String response = geminiClient
                 .prompt(q)
                 .call()
                 .content();
-        return ResponseEntity.ok(respose);
+
+        return ResponseEntity.ok(response);
+    }
+
+
+    @GetMapping("/chat/groq")
+    public ResponseEntity<String> chatGroq(@RequestParam String q) {
+
+        String response = groqClient
+                .prompt(q)
+                .call()
+                .content();
+
+        return ResponseEntity.ok(response);
+    }
+
+
+    @GetMapping("/chat/local")
+    public ResponseEntity<String> chatLocal(@RequestParam String q) {
+
+        String response = ollamaClient
+                .prompt(q)
+                .call()
+                .content();
+
+        return ResponseEntity.ok(response);
     }
 }
