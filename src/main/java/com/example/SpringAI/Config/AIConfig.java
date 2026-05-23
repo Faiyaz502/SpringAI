@@ -54,4 +54,23 @@ public class AIConfig {
 
         return ChatClient.builder(ollamaChatModel).build();
     }
+
+
+    @Bean("chatClient")
+    public ChatClient chatClient() {
+
+        OpenAiApi api = OpenAiApi.builder()
+                .baseUrl("https://generativelanguage.googleapis.com/v1beta/openai")
+                .apiKey(System.getenv("GEMINI_API_KEY"))
+                .build();
+
+        OpenAiChatModel model = OpenAiChatModel.builder()
+                .openAiApi(api)
+                .defaultOptions(OpenAiChatOptions.builder()
+                        .model("gemini-2.5-flash")
+                        .build())
+                .build();
+
+        return ChatClient.builder(model).build();
+    }
 }
