@@ -24,7 +24,7 @@ public class AIConfig {
         OpenAiChatModel model = OpenAiChatModel.builder()
                 .openAiApi(api)
                 .defaultOptions(OpenAiChatOptions.builder()
-                        .model("gemini-2.5-flash")
+                        .model("gemini-3.5-flash")
                         .build())
                 .build();
 
@@ -42,7 +42,7 @@ public class AIConfig {
         OpenAiChatModel model = OpenAiChatModel.builder()
                 .openAiApi(api)
                 .defaultOptions(OpenAiChatOptions.builder()
-                        .model("llama-3.3-70b-versatile")
+                        .model("qwen/qwen3-32b")
                         .build())
                 .build();
 
@@ -67,7 +67,7 @@ public class AIConfig {
         OpenAiChatModel model = OpenAiChatModel.builder()
                 .openAiApi(api)
                 .defaultOptions(OpenAiChatOptions.builder()
-                        .model("gemini-2.5-flash")
+                        .model("gemini-3.5-flash")
                         .build())
                 .build();
 
