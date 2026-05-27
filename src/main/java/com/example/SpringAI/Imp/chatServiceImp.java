@@ -4,6 +4,7 @@ import com.example.SpringAI.Entity.customResponse;
 import com.example.SpringAI.service.ChatService;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.prompt.Prompt;
+import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.beans.factory.annotation.ParameterResolutionDelegate;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.core.ParameterizedTypeReference;
@@ -106,6 +107,21 @@ public class chatServiceImp implements ChatService {
 
 
         return entities;
+    }
+
+    // Can make a Specific api for a Specific AI model by using this
+
+    @Override
+    public String chatClientModelSpecific(String query) {
+
+        Prompt prompt = new Prompt(query, OpenAiChatOptions.builder()
+                .model("gemini-3.5-flash")
+                .temperature(0.4)
+                .maxTokens(100)
+                .build());
+
+
+        return "" + prompt;
     }
 
 

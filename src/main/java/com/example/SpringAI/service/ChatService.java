@@ -11,4 +11,7 @@ public interface ChatService {
     customResponse chatCustomResponse(String query);
 
     List<customResponse> chatCustomResponseList(String query);
+
+
+    String chatClientModelSpecific(String query);
 }
