@@ -71,6 +71,8 @@ public class AIConfig {
                         .build())
                 .build();
 
-        return ChatClient.builder(model).build();
+        return ChatClient.builder(model)
+                .defaultSystem("You are a professional assistant")
+                .build();
     }
 }
