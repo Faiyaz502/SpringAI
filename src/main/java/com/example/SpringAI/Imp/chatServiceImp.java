@@ -73,7 +73,7 @@ public class chatServiceImp implements ChatService {
 
    return content;
     }
-
+    // Single response by using prompt
     @Override
     public customResponse chatCustomResponse(String query) {
 
@@ -90,7 +90,7 @@ public class chatServiceImp implements ChatService {
 
         return entity;
     }
-
+    //--------- Use for List Response---------
     @Override
     public List<customResponse> chatCustomResponseList(String query) {
         String promt = "who is adam grilcist";
@@ -109,7 +109,7 @@ public class chatServiceImp implements ChatService {
         return entities;
     }
 
-    // Can make a Specific api for a Specific AI model by using this
+    // Can make a Specific api call for a Specific AI model by using this
 
     @Override
     public String chatClientModelSpecific(String query) {
