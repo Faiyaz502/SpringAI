@@ -19,6 +19,7 @@ public class chatServiceImp implements ChatService {
     private final ChatClient chatClient;
 
     public chatServiceImp(@Qualifier("chatClient") ChatClient chatClient) {
+
         this.chatClient = chatClient;
     }
 
@@ -121,8 +122,35 @@ public class chatServiceImp implements ChatService {
                 .build());
 
 
-        return "" + prompt;
+
+        return chatClient
+                .prompt(prompt)
+                .call()
+                .content();
     }
+
+
+
+    //--------Dynamic Prompt ----------
+
+
+
+    @Override
+    public String dynamicPrompt(String query) {
+
+        //Traditional way
+        String full_info = "Reply as a Coding expert in java. now Reply for this : {query}" ;
+        var message = chatClient
+                .prompt()
+                .user(u -> u.text(full_info).param("query",query))
+                .call()
+                .content();
+
+
+
+        return message ;
+    }
+
 
 
 }
