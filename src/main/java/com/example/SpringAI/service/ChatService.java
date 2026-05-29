@@ -14,4 +14,6 @@ public interface ChatService {
 
 
     String chatClientModelSpecific(String query);
+
+    String dynamicPrompt(String query);
 }
