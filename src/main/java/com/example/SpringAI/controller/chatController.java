@@ -61,8 +61,8 @@ public class chatController {
     }
 
 
-    @GetMapping("/chat/local")
-    public ResponseEntity<String> chatLocal(@RequestParam String q) {
+    @GetMapping("/chat/localAi")
+    public ResponseEntity<String> chatLocalAi(@RequestParam String q) {
 
         String response = ollamaClient
                 .prompt(q)
@@ -73,7 +73,7 @@ public class chatController {
     }
 
 
-   /// Chat Response
+   /// -----------Chat Response-------------
 
     @GetMapping("/chat")
     public ResponseEntity<String> chat(@RequestParam String q) {
@@ -92,5 +92,19 @@ public class chatController {
 
         return ResponseEntity.ok(chatService.chatCustomResponseList(q));
     }
+
+    @GetMapping("/chatSpecificModel")
+    public ResponseEntity<String> chatSpecificModel(@RequestParam String q) {
+
+        return ResponseEntity.ok(chatService.chatClientModelSpecific(q));
+    }
+
+    @GetMapping("/dynamicQuery")
+    public ResponseEntity<String> chatDynamicQuery(@RequestParam String q) {
+
+        return ResponseEntity.ok(chatService.dynamicPrompt(q));
+    }
+
+
 
 }
