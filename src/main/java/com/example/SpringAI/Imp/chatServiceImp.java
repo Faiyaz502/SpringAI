@@ -110,7 +110,7 @@ public class chatServiceImp implements ChatService {
         return entities;
     }
 
-    // Can make a Specific api call for a Specific AI model by using this
+    // ---------Can make a Specific api call for a Specific AI model by using this
 
     @Override
     public String chatClientModelSpecific(String query) {
