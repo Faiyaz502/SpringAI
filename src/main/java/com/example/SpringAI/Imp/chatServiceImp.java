@@ -26,7 +26,7 @@ public class chatServiceImp implements ChatService {
     @Override
     public String chat(String query) {
 
-        String promt = "tell me about adam grilcist";
+        String promt = "tell me about adam grilkist";
 
 
         Prompt promt1 = new Prompt(promt);
