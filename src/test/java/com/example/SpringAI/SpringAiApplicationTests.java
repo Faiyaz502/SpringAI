@@ -39,7 +39,7 @@ class SpringAiApplicationTests {
         System.out.println("Running the LLM");
 
 
-        String res = prompReadingFromFiles.UserPromptUsingFile();
+        String res = promptTemplateSerivce.chatTemplateWithSystemPrompt("");
 
 
         System.out.println(res);
