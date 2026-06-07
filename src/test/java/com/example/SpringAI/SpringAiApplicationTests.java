@@ -47,4 +47,18 @@ class SpringAiApplicationTests {
 
     }
 
+    @Test
+    void chatTemplate(){
+
+        System.out.println("Running the LLM");
+
+
+        String res = promptTemplateSerivce.chatTemplate("");
+
+
+        System.out.println(res);
+
+
+    }
+
 }
