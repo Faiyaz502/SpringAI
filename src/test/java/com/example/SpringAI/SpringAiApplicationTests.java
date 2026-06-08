@@ -2,6 +2,7 @@ package com.example.SpringAI;
 
 import com.example.SpringAI.Imp.PrompReadingFromFiles;
 import com.example.SpringAI.Imp.promptTemplateService;
+import com.example.SpringAI.service.ChatService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -9,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 @SpringBootTest
 class SpringAiApplicationTests {
 
+    @Autowired
+    private ChatService chatService;
 
     @Autowired
     private PrompReadingFromFiles prompReadingFromFiles;
@@ -19,6 +22,21 @@ class SpringAiApplicationTests {
 	@Test
 	void contextLoads() {
 	}
+
+    @Test
+    void dynamicPrompt(){
+
+        System.out.println("Running the LLM");
+
+
+        String res = chatService.dynamicPrompt("");
+
+
+        System.out.println(res);
+
+
+    }
+
     @Test
     void PromptUsingFile(){
 
