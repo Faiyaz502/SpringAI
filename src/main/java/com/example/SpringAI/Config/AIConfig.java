@@ -2,6 +2,8 @@ package com.example.SpringAI.Config;
 
 import org.springframework.ai.chat.client.ChatClient;
 
+import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
+import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.openai.OpenAiChatModel;
 
@@ -9,6 +11,8 @@ import org.springframework.ai.openai.OpenAiChatOptions;
 import org.springframework.ai.openai.api.OpenAiApi;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+
+import java.util.List;
 
 @Configuration
 public class AIConfig {
@@ -72,6 +76,7 @@ public class AIConfig {
                 .build();
 
         return ChatClient.builder(model)
+                .defaultAdvisors(new SimpleLoggerAdvisor(),new SafeGuardAdvisor(List.of("Game","Cricket","Football"))) // globally will log all thing
                 .defaultSystem("You are a professional assistant")
                 .build();
     }
