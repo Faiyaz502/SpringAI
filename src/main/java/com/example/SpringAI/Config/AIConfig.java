@@ -76,7 +76,7 @@ public class AIConfig {
                 .build();
 
         return ChatClient.builder(model)
-                .defaultAdvisors(new SimpleLoggerAdvisor(),new SafeGuardAdvisor(List.of("Game","Cricket","Football"))) // globally will log all thing
+                .defaultAdvisors(new SimpleLoggerAdvisor(),new SafeGuardAdvisor(List.of("Game","Cricket","Football","Job"))) // globally will log all thing and ignore the prompt with those words
                 .defaultSystem("You are a professional assistant")
                 .build();
     }
