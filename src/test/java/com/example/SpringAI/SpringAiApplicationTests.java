@@ -1,5 +1,6 @@
 package com.example.SpringAI;
 
+import com.example.SpringAI.Imp.ChatAdviserService;
 import com.example.SpringAI.Imp.PrompReadingFromFiles;
 import com.example.SpringAI.Imp.promptTemplateService;
 import com.example.SpringAI.service.ChatService;
@@ -18,6 +19,9 @@ class SpringAiApplicationTests {
 
     @Autowired
     private promptTemplateService promptTemplateSerivce;
+
+    @Autowired
+    private ChatAdviserService chatAdviserService;
 
 	@Test
 	void contextLoads() {
@@ -72,6 +76,21 @@ class SpringAiApplicationTests {
 
 
         String res = promptTemplateSerivce.chatTemplate("");
+
+
+        System.out.println(res);
+
+
+    }
+
+
+    @Test
+    void chatWithAdviser(){
+
+        System.out.println("Running the LLM");
+
+
+        String res = chatAdviserService.chatWithAdviser("Tell me about java");
 
 
         System.out.println(res);
