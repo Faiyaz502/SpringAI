@@ -73,13 +73,9 @@ class SpringAiApplicationTests {
     void chatTemplate(){
 
         System.out.println("Running the LLM");
-
-
         String res = promptTemplateSerivce.chatTemplate("");
 
-
         System.out.println(res);
-
 
     }
 
@@ -89,9 +85,7 @@ class SpringAiApplicationTests {
 
         System.out.println("Running the LLM");
 
-
-        String res = chatAdviserService.chatWithAdviser("Tell me about java");
-
+        String res = chatAdviserService.chatWithAdviser("Tell me about java And Spring boot");
 
         System.out.println(res);
 
