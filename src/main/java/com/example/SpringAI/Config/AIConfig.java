@@ -1,5 +1,6 @@
 package com.example.SpringAI.Config;
 
+import com.example.SpringAI.adviser.TokenTraceAdviser;
 import org.springframework.ai.chat.client.ChatClient;
 
 import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
@@ -32,7 +33,9 @@ public class AIConfig {
                         .build())
                 .build();
 
-        return ChatClient.builder(model).build();
+        return ChatClient.builder(model)
+                .defaultAdvisors(new SimpleLoggerAdvisor())
+                .build();
     }
 
     @Bean("groqClient")
@@ -72,11 +75,14 @@ public class AIConfig {
                 .openAiApi(api)
                 .defaultOptions(OpenAiChatOptions.builder()
                         .model("gemini-3.5-flash")
+                        .maxTokens(200)
                         .build())
+
                 .build();
 
         return ChatClient.builder(model)
-                .defaultAdvisors(new SimpleLoggerAdvisor(),new SafeGuardAdvisor(List.of("Game","Cricket","Football","Job"))) // globally will log all thing and ignore the prompt with those words
+                .defaultAdvisors(new SafeGuardAdvisor(List.of("Game","Cricket","Football","Job")),
+                        new TokenTraceAdviser()) // globally will log all thing and ignore the prompt with those words
                 .defaultSystem("You are a professional assistant")
                 .build();
     }

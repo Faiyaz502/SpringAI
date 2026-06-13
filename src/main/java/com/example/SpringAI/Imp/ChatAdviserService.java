@@ -21,7 +21,7 @@ public class ChatAdviserService {
 
            String res = chatClient
                     .prompt(query)
-                    .advisors(new SimpleLoggerAdvisor())
+                    .advisors()
                     .call()
                     .content();
 
