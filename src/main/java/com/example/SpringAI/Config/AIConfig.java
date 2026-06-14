@@ -67,17 +67,16 @@ public class AIConfig {
     public ChatClient chatClient() {
 
         OpenAiApi api = OpenAiApi.builder()
-                .baseUrl("https://generativelanguage.googleapis.com/v1beta/openai")
-                .apiKey(System.getenv("GEMINI_API_KEY"))
+                .baseUrl("https://api.groq.com/openai")
+                .apiKey(System.getenv("GROQ_API_KEY"))
                 .build();
 
         OpenAiChatModel model = OpenAiChatModel.builder()
                 .openAiApi(api)
                 .defaultOptions(OpenAiChatOptions.builder()
-                        .model("gemini-3.5-flash")
                         .maxTokens(200)
+                        .model("qwen/qwen3-32b")
                         .build())
-
                 .build();
 
         return ChatClient.builder(model)

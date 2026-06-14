@@ -28,6 +28,24 @@ public class TokenTraceAdviser implements StreamAdvisor , CallAdvisor {
         this.log.info("---------Respose got from the Model---------");
         this.log.info("Response : "+ chatClientResponse.chatResponse().getResult().getOutput().getText());
 
+        //Prompt Token-----
+        this.log.info("Prompt Token Consumed : ------->"+chatClientResponse
+                .chatResponse()
+                .getMetadata()
+                .getUsage()
+                .getPromptTokens());
+
+        //Completion Token -----------
+
+        this.log.info("Completion Token Consumed : ------->"+chatClientResponse
+                .chatResponse()
+                .getMetadata()
+                .getUsage()
+                .getCompletionTokens());
+
+
+        //Total Token -----------
+
         this.log.info("Total Token Consumed : ------->"+chatClientResponse
                 .chatResponse()
                 .getMetadata()
