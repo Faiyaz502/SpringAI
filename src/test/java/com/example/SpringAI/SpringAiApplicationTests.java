@@ -92,4 +92,16 @@ class SpringAiApplicationTests {
 
     }
 
+    @Test
+    void analyzeTokenConsumption(){
+
+        System.out.println("Running the LLM");
+
+        String res = chatAdviserService.chatWithAdviser("Tell me about Spring AI");
+
+        System.out.println(res);
+
+
+    }
+
 }
