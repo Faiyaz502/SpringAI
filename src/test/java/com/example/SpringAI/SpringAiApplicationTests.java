@@ -97,7 +97,7 @@ class SpringAiApplicationTests {
 
         System.out.println("Running the LLM");
 
-        String res = chatAdviserService.chatWithAdviser("Tell me about Spring AI");
+        String res = chatAdviserService.chatWithAdviser("Tell me about Spring AI and one implementation");
 
         System.out.println(res);
 
