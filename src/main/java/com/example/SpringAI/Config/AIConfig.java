@@ -82,7 +82,7 @@ public class AIConfig {
         return ChatClient.builder(model)
                 .defaultAdvisors(new SafeGuardAdvisor(List.of("Game","Cricket","Football","Job")),
                         new TokenTraceAdviser()) // globally will log all thing and ignore the prompt with those words
-                .defaultSystem("You are a professional assistant")
+                .defaultSystem("You are a professional assistant of Sports!!!")
                 .build();
     }
 }
