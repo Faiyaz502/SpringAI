@@ -93,6 +93,18 @@ class SpringAiApplicationTests {
     }
 
     @Test
+    void chatClientModelSpecific(){
+
+        System.out.println("Running the LLM ");
+
+        String res = chatService.chatClientModelSpecific("Tell me about java And Spring boot");
+
+        System.out.println(res);
+
+
+    }
+
+    @Test
     void analyzeTokenConsumption(){
 
         System.out.println("Running the LLM");
