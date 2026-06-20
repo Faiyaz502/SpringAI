@@ -83,7 +83,7 @@ class SpringAiApplicationTests {
     @Test
     void chatWithAdviser(){
 
-        System.out.println("Running the LLM ");
+        System.out.println("Running the LLM    ");
 
         String res = chatAdviserService.chatWithAdviser("Tell me about java And Spring boot");
 
