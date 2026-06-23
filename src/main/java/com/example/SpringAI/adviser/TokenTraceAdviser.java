@@ -46,7 +46,7 @@ public class TokenTraceAdviser implements StreamAdvisor , CallAdvisor {
 
         //Total Token -----------
 
-        this.log.info("Total Token Consumed : ------->"+chatClientResponse
+        this.log.info("Total Token Consumed :------->"+chatClientResponse
                 .chatResponse()
                 .getMetadata()
                 .getUsage()
