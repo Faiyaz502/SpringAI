@@ -72,7 +72,7 @@ class SpringAiApplicationTests {
     @Test
     void chatTemplate(){
 
-        System.out.println("Running the LLM");
+        System.out.println("Running the LLM ");
         String res = promptTemplateSerivce.chatTemplate("");
 
         System.out.println(res);
@@ -85,7 +85,7 @@ class SpringAiApplicationTests {
 
         System.out.println("Running the LLM");
 
-        String res = chatAdviserService.chatWithAdviser("Tell me about java Exceptions");
+        String res = chatAdviserService.chatWithAdviser("Tell me about java Exceptions ");
 
         System.out.println(res);
 
@@ -97,7 +97,7 @@ class SpringAiApplicationTests {
 
         System.out.println("Running the LLM ");
 
-        String res = chatService.chatClientModelSpecific("Tell me about java And Spring boot");
+        String res = chatService.chatClientModelSpecific("Tell me about java And Spring boot ");
 
         System.out.println(res);
 
