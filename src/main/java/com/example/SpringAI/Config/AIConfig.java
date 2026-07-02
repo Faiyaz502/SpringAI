@@ -74,7 +74,6 @@ public class AIConfig {
         OpenAiChatModel model = OpenAiChatModel.builder()
                 .openAiApi(api)
                 .defaultOptions(OpenAiChatOptions.builder()
-                        .maxTokens(200)
                         .model("qwen/qwen3-32b")
                         .build())
                 .build();
