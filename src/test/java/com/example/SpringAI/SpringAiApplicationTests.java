@@ -2,11 +2,13 @@ package com.example.SpringAI;
 
 import com.example.SpringAI.Imp.ChatAdviserService;
 import com.example.SpringAI.Imp.PrompReadingFromFiles;
+import com.example.SpringAI.Imp.StreamResponserService;
 import com.example.SpringAI.Imp.promptTemplateService;
 import com.example.SpringAI.service.ChatService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import reactor.core.publisher.Flux;
 
 @SpringBootTest
 class SpringAiApplicationTests {
@@ -22,6 +24,9 @@ class SpringAiApplicationTests {
 
     @Autowired
     private ChatAdviserService chatAdviserService;
+
+    @Autowired
+    private StreamResponserService streamResponserService;
 
 	@Test
 	void contextLoads() {
@@ -115,5 +120,11 @@ class SpringAiApplicationTests {
 
 
     }
+
+
+
+
+
+
 
 }

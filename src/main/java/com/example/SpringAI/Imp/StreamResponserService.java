@@ -24,7 +24,6 @@ public class StreamResponserService {
 
         return this.chatClient.prompt()
                 .system(promptSystemSpec -> promptSystemSpec.text("Java Expert"))
-                .user(promptUserSpec -> promptUserSpec.text(userMessage))
                 .stream()
                 .content();
 

@@ -59,7 +59,7 @@ public class TokenTraceAdviser implements StreamAdvisor , CallAdvisor {
 
     @Override
     public Flux<ChatClientResponse> adviseStream(ChatClientRequest chatClientRequest, StreamAdvisorChain streamAdvisorChain) {
-        return null;
+        return streamAdvisorChain.nextStream(chatClientRequest);
     }
 
     @Override
