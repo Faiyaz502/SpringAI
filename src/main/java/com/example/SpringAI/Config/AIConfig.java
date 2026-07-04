@@ -1,10 +1,14 @@
 package com.example.SpringAI.Config;
 
 import com.example.SpringAI.adviser.TokenTraceAdviser;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.ai.chat.client.ChatClient;
 
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.SafeGuardAdvisor;
 import org.springframework.ai.chat.client.advisor.SimpleLoggerAdvisor;
+import org.springframework.ai.chat.memory.ChatMemory;
 import org.springframework.ai.ollama.OllamaChatModel;
 import org.springframework.ai.openai.OpenAiChatModel;
 
@@ -17,6 +21,8 @@ import java.util.List;
 
 @Configuration
 public class AIConfig {
+
+    Logger log = LoggerFactory.getLogger(AIConfig.class);
 
     @Bean("geminiClient")
     public ChatClient geminiClient() {
@@ -81,6 +87,36 @@ public class AIConfig {
         return ChatClient.builder(model)
                 .defaultAdvisors(new SafeGuardAdvisor(List.of("Game","Cricket ","Football ")),
                         new TokenTraceAdviser()) // globally will log all thing and ignore the prompt with those words
+                .defaultSystem("You are a professional assistant of the Sports!!!")
+                .build();
+    }
+
+    // Memory Implementation
+
+
+    @Bean("chatClientWithMemory")
+    public ChatClient chatClientWithMemory(ChatMemory chatMemory) {
+
+        this.log.info(chatMemory.getClass().getName());
+
+        //Storing messages
+        MessageChatMemoryAdvisor messageChatMemoryAdvisor = MessageChatMemoryAdvisor.builder(chatMemory).build();
+
+        OpenAiApi api = OpenAiApi.builder()
+                .baseUrl("https://api.groq.com/openai")
+                .apiKey(System.getenv("GROQ_API_KEY"))
+                .build();
+
+        OpenAiChatModel model = OpenAiChatModel.builder()
+                .openAiApi(api)
+                .defaultOptions(OpenAiChatOptions.builder()
+                        .model("qwen/qwen3-32b")
+                        .build())
+                .build();
+
+        return ChatClient.builder(model)
+                .defaultAdvisors(new SafeGuardAdvisor(List.of("Game","Cricket ","Football ")),
+                        new TokenTraceAdviser(),messageChatMemoryAdvisor) // globally will log all thing and ignore the prompt with those words
                 .defaultSystem("You are a professional assistant of the Sports!!!")
                 .build();
     }
