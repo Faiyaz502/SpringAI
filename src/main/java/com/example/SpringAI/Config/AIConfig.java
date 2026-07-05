@@ -111,6 +111,7 @@ public class AIConfig {
                 .openAiApi(api)
                 .defaultOptions(OpenAiChatOptions.builder()
                         .model("qwen/qwen3-32b")
+                        .maxTokens(200)
                         .build())
                 .build();
 
