@@ -19,13 +19,13 @@ public class TokenTraceAdviser implements StreamAdvisor , CallAdvisor {
     public ChatClientResponse adviseCall(ChatClientRequest chatClientRequest, CallAdvisorChain callAdvisorChain) {
 
 
-        this.log.info("---------My Token Adviser Called---------");
+        this.log.info("---------My Token Adviser Called  ---------");
 
         this.log.info("Request : ---"+ chatClientRequest.prompt().getContents());
 
         ChatClientResponse chatClientResponse = callAdvisorChain.nextCall(chatClientRequest);
 
-        this.log.info("---------Respose got from the Model---------");
+        this.log.info("---------Respose got from the Model  ---------");
         this.log.info("Response : "+ chatClientResponse.chatResponse().getResult().getOutput().getText());
 
         //Prompt Token-----
