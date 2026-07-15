@@ -37,7 +37,7 @@ public class TokenTraceAdviser implements StreamAdvisor , CallAdvisor {
 
         //Completion Token -----------
 
-        this.log.info("Completion Token Consumed : ------->"+chatClientResponse
+        this.log.info("Completion Token Consumed  : ------->"+chatClientResponse
                 .chatResponse()
                 .getMetadata()
                 .getUsage()
